@@ -1,0 +1,311 @@
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+@import '~@angular/material/theming';
+@include mat-core();
+
+/*===========================
+     01.Themes css 
+===========================*/
+
+$theme-colors : (
+    50: hsl(0, 0%, 100%),
+    100: hsl(209, 23%, 22%),
+    200: #b4c9e4,
+    300: #7fa3d1,
+    400: #6992c9,
+    500: #5282c1,
+    600: #4072b4,
+    700: #38649d,
+    800: #305687,
+    900: #284770,
+    A100: #ffffff,
+    A200: #dde6f3,
+    A400: #6992c9,
+    A700: #38649d,
+    contrast: (
+        50: $black-87-opacity,
+        100: $black-87-opacity,
+        200: $black-87-opacity,
+        300: $black-87-opacity,
+        400: $black-87-opacity,
+        500: white,
+        600: white,
+        700: white,
+        800: white,
+        900: white,
+        A100: $black-87-opacity,
+        A200: $black-87-opacity,
+        A400: $black-87-opacity,
+        A700: white,
+    )
+);
+
+//Light theme
+$restcountries-light-primary: mat-palette($theme-colors, 50);
+$restcountries-light-accent: mat-palette($theme-colors, 800);
+$restcountries-light-warn: mat-palette($mat-red, 500);
+$restcountries-light-theme: mat-light-theme((
+  color: (
+    primary: $restcountries-light-primary,
+    accent: $restcountries-light-accent,
+    warn: $restcountries-light-warn
+  )
+));
+
+//Dark theme
+$restcountries-dark-primary: mat-palette($theme-colors , 100);
+$restcountries-dark-accent: mat-palette($mat-purple, A700);
+$restcountries-dark-warn: mat-palette($mat-red, A400);
+$restcountries-dark-theme: mat-dark-theme((
+  color: (
+    primary: $restcountries-dark-primary,
+    accent: $restcountries-dark-accent,
+    warn: $restcountries-dark-warn
+  )
+));
+
+@include angular-material-theme($restcountries-light-theme);
+
+.light-theme{
+    @include angular-material-theme($restcountries-light-theme);
+    background : hsl(0, 0%, 98%);
+    color : hsl(200, 15%, 8%) !important;
+}
+
+.dark-theme{
+    @include angular-material-theme($restcountries-dark-theme);
+    background: hsl(207, 26%, 17%);
+    color : hsl(0, 0%, 100%) !important;
+}
+
+.mat-flat-button.mat-accent, .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent,
+.light-theme .mat-flat-button.mat-accent, .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent
+{
+  background : hsl(0, 0%, 98%);
+    color : hsl(200, 15%, 8%) !important;
+    margin-right : 10px;
+    margin-bottom: 10px;
+}
+
+.dark-theme .mat-flat-button.mat-accent, .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent
+{
+  background: hsl(209, 23%, 22%);
+  color : hsl(0, 0%, 100%) !important;
+  margin-right : 10px;
+}
+
+/*===========================
+     02.General css 
+===========================*/
+.spacer {
+  flex: 1 1 auto;
+}
+
+html, body { height: 100%; }
+body, span { 
+  margin: 0; 
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+h1,
+.mat-h1, .mat-subheading-2, .mat-typography h1
+{
+font-family: 'Nunito Sans', sans-serif;
+font-size: 18px;
+font-weight: 800;
+}
+
+.mat-h3, .mat-subheading-2, .mat-typography h3{
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+a {
+  font-family: 'Nunito Sans', sans-serif;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+input {    
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  width: 85%;
+  margin-left: 20px;
+  background: transparent;
+  border: none;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+}
+
+.light-theme input
+{
+    color : hsl(200, 15%, 8%) !important ;
+}
+
+.dark-theme input
+{
+    color : hsl(0, 0%, 100%);
+}
+
+.input-container{
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background: hsl(0, 0%, 100%);
+}
+
+.dark-theme .input-container {
+    background: #2b3945;
+}
+
+.light-theme .input-container {
+    background: hsl(0, 0%, 100%);
+}
+
+.loading{
+  margin-top:10%;
+  width: 100%;
+  text-align: center;
+}
+
+/*===========================
+     03.mat-toolbar css 
+===========================*/
+.imgLogo{
+  height: 20px;
+  margin-right: 10px;
+}
+.mat-toolbar {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.dark-theme .mat-toolbar.mat-primary {
+    color : hsl(0, 0%, 100%);
+}
+
+.pad-row{
+    margin-top: 20px;
+}
+
+.pad-container{
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.country-card {
+    cursor: pointer;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 14px;
+    max-width: 250px;
+    margin: 22px;
+  }
+
+
+/*===========================
+     03.Cards css 
+===========================*/
+  .mat-card-image{
+      height: 140px;
+  }
+
+  .dark-theme .mat-input-element option,
+  .dark-theme .mat-card,
+  .dark-theme .mat-form-field-infix
+  {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 14px;
+    background: hsl(209, 23%, 22%);   
+    color : hsl(0, 0%, 100%) !important;
+  }
+
+  .ligth-theme .mat-input-element option,
+  .ligth-theme .mat-card,
+  .ligth-theme .mat-form-field-infix
+  {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 14px;
+    background: hsl(0, 0%, 100%);
+    color : hsl(200, 15%, 8%) !important ;
+  }
+
+  .mat-form-field.mat-focused .mat-form-field-label,
+  .mat-form-field-appearance-legacy .mat-form-field-label{
+    color : hsl(200, 15%, 8%) !important ;
+  }
+
+  .dark-theme .mat-form-field.mat-focused .mat-form-field-label,
+  .dark-theme .mat-form-field-appearance-legacy .mat-form-field-label{
+    color : hsl(0, 0%, 100%) !important;
+  }
+
+  .mat-card
+  {
+    min-height: 300px;
+  }
+
+/*===========================
+     04.Detail countries css 
+===========================*/
+  .mat-form-field-infix
+  {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 14px;
+    background: hsl(0, 0%, 100%);
+  }
+  .mat-form-field
+  {
+      float: right;
+      margin-right: 5px;
+  }
+
+  .mat-form-field-type-mat-native-select .mat-input-element{
+    padding-left: 5%;
+  }
+
+  .divButtonBack
+  {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  .divBorders
+  {
+    margin-top: 20px;
+  }
+
+/*===========================
+     05.Media  css 
+===========================*/
+  @media (max-width: 767px) {
+
+  .mat-toolbar {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .pad-container {
+    padding-left: 10px; 
+    padding-right: 10px; 
+  }
+
+  .mat-form-field{
+    float: left;
+    margin-left: 10px;
+    margin-top: 30px;
+  }
+  
+  .divCards
+  {
+    display: table;
+    margin: auto;
+  }
+}

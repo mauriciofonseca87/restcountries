@@ -1,0 +1,9 @@
+<mat-card class="country-card">
+  <img mat-card-image src="{{country.flag}}" alt="{{country.name}}">
+  <mat-card-content>
+    <h3>{{country.name}}</h3>
+    <span><b>Population: </b>{{country.population | number}}</span><br/>
+    <span><b>Region: </b>{{country.region}}</span><br/>
+    <span><b>Capital: </b>{{country.capital}}</span><br/>
+  </mat-card-content>
+</mat-card>

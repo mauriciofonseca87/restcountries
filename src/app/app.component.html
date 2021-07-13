@@ -1,0 +1,58 @@
+<div style="background: inherit; min-height: 100%;">
+
+  <!-- Header -->
+  <header>
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <img class="imgLogo" src="../assets/images/mu.png" alt="Mensajeros Urbanos">
+        <span>Where in the world?</span>
+        <span class="spacer"></span>
+        <div *ngIf="LightTheme">
+          <a (click)="onSetTheme('dark-theme')" aria-label="Change dark mode">
+            <fa-icon [icon]="faMoon"></fa-icon> Dark mode
+          </a>
+        </div>
+        <div *ngIf="!LightTheme">
+          <a (click)="onSetTheme('light-theme')" aria-label="Change light mode">
+            <fa-icon [icon]="faSun"></fa-icon> Light mode
+          </a>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </header>
+
+  <!-- Filters and list of contries -->
+  <div *ngIf="!countryselected" class="container-fluid pad-container">
+    <div class="row pad-row">
+      <div class="col-lg-6 col-md-12">
+        <div color="primary" class="input-container">
+          <fa-icon [icon]="faSearch"></fa-icon>
+          <input #inputSearch (input)="handleFilter($event.target.value)" class="input-field" type="text"
+            placeholder="Search for a country..." name="srchcountry">
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <mat-form-field>
+          <mat-label class="red-float">Filter by Region</mat-label>
+          <select matNativeControl (change)="onSelectRegion($event.target.value)">
+            <option *ngFor="let region of regions" [value]="region.value">{{region.viewValue}}</option>
+          </select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row divCards">
+      <div *ngIf="!listCountries" class="loading">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      <app-cardcountry (click)="onSelectCountry(country)" [country]="country" *ngFor="let country of listCountries">
+      </app-cardcountry>
+    </div>
+  </div>
+
+  <!-- Detail contry -->
+  <div *ngIf="countryselected" class="container">
+    <app-detailcountry [countryDetail]="countryselected" [Listcountries]="listCountriesAux" (close)="closeDetail()"></app-detailcountry>
+  </div>
+</div>
